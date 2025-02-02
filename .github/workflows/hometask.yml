@@ -42,9 +42,9 @@ jobs:
           mvn clean install
 
       # Run unit tests
-      #- name: Run unit tests
-      #  run: |
-      #    mvn test
+      - name: Run unit tests
+        run: |
+          mvn test
 
       # Update the project repository (commit changes, etc.)
       #- name: Commit updates (if any)
