@@ -32,9 +32,9 @@ jobs:
           node-version: '14'  # Set the appropriate version based on your project
 
       # Install dependencies (for example, using npm)
-      #- name: Install dependencies
-      #  run: |
-      #    npm install  # You can change this to another package manager if needed (e.g., `pip install`)
+      - name: Install dependencies
+        run: |
+           npm install  # You can change this to another package manager if needed (e.g., `pip install`)
 
       # Build the project (This will vary depending on your project setup)
       #- name: Build project
