@@ -30,8 +30,8 @@ jobs:
       - name: Set up Java 11
         uses: actions/setup-java@v2
         with:
-          java-version: '11'  # Specify the version of Java you want to install
-          java-package: 'jdk'  # You can also use 'jdk' for the full JDK or 'jre' for the Java runtime environment
+          distribution: 'temurin'  # Eclipse Temurin (Adoptium) JDK
+          java-version: '11'  # Install Java 11
 
       # Verify Java installation
       - name: Verify Java installation
