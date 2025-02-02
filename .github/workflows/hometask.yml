@@ -27,15 +27,16 @@ jobs:
       - uses: actions/checkout@v4
       
       # Set up the environment (installing necessary software like Node, Python, Java, etc.)
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Set up Java 11
+        uses: actions/setup-java@v2
         with:
-          node-version: '14'  # Set the appropriate version based on your project
+          java-version: '11'  # Specify the version of Java you want to install
+          java-package: 'jdk'  # You can also use 'jdk' for the full JDK or 'jre' for the Java runtime environment
 
-      # Install dependencies (for example, using npm)
-      - name: Install dependencies
+      # Verify Java installation
+      - name: Verify Java installation
         run: |
-           npm install 
+          java -version  # Verify Java version is installed correctly 
 
       # Build the project (This will vary depending on your project setup)
       - name: Build project
@@ -46,12 +47,3 @@ jobs:
       - name: Run unit tests
         run: |
           mvn test
-
-      # Update the project repository (commit changes, etc.)
-      # - name: Commit updates (if any)
-      #  run: |
-      #    git config --global user.name "github-actions[bot]"
-      #    git config --global user.email "github-actions[bot]@users.noreply.github.com"
-      #    git add .
-      #    git commit -m "Update code after CI"
-      #    git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
