@@ -49,7 +49,7 @@ jobs:
       # Update the project repository (commit changes, etc.)
       - name: Commit updates (if any)
         run: |
-          git config --global user.name "Oleksandr Naumchak"
+          git config --global user.name "Oleksandr-Naumchak"
           git config --global user.email "naumchak@ukr.net"
           git add .
           git commit -m "Update code after CI"
