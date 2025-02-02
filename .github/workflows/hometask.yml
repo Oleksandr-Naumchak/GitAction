@@ -1,0 +1,56 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI Workflow
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+      
+      # Set up the environment (installing necessary software like Node, Python, Java, etc.)
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Set the appropriate version based on your project
+
+      # Install dependencies (for example, using npm)
+      - name: Install dependencies
+        run: |
+          npm install  # You can change this to another package manager if needed (e.g., `pip install`)
+
+      # Build the project (This will vary depending on your project setup)
+      - name: Build project
+        run: |
+          npm run build  # Or your equivalent build command like `mvn clean install`, `gradle build`, etc.
+
+      # Run unit tests
+      - name: Run unit tests
+        run: |
+          npm test  # Or your equivalent testing command like `pytest`, `mvn test`, etc.
+
+      # Update the project repository (commit changes, etc.)
+      - name: Commit updates (if any)
+        run: |
+          git config --global user.name "Oleksandr Naumchak"
+          git config --global user.email "naumchak@ukr.net"
+          git add .
+          git commit -m "Update code after CI"
+          git push
